@@ -1,15 +1,15 @@
 #include <stdio.h>
 
 // Define struct outside of the function
-struct Rectangle {
+typedef struct Rectangle {
     int area;
     int perimeter;
-};
+} Rectangle;
 
 // Function that creates and returns a struct
-struct Rectangle areaOfRectangle(int width, int height) {
+Rectangle areaOfRectangle(int width, int height) {
     // Create and initialize struct
-    struct Rectangle rect;
+    Rectangle rect;
     rect.area = width * height;
     rect.perimeter = width * 2 + height * 2;
 
@@ -19,7 +19,7 @@ struct Rectangle areaOfRectangle(int width, int height) {
 
 int main() {
     // Call function and store returned struct in a variable
-    struct Rectangle obj = areaOfRectangle(7, 5);
+    Rectangle obj = areaOfRectangle(7, 5);
 
     // Access struct members
     printf("Perimeter of the rectangle is: %d\n", obj.perimeter);
