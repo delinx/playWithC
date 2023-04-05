@@ -21,8 +21,13 @@ void print_anything(void *ptr, size_t data_size) {
     }
 }
 
-char* reverseString(char name[], const size_t length) {
-    printf("%zu\n", length);
+char* reverseString(char name[], size_t length) {
+    int isNullTerminator = 0;
+
+    if (name[length - 1] == '\0') {
+        length--;
+        isNullTerminator = 1;
+    }
     for (int i = 0; i < length-1; i++) {
         printf("PHASE %i: \n", i);
         char lastElement = name[length - 1];
@@ -33,7 +38,11 @@ char* reverseString(char name[], const size_t length) {
         name[i] = lastElement;
         printf("name[%d] = %c\n", i, name[i]);
     }
+    printf("name[%zu] = 0; %c\n", length, name[length-1]);
     printf("%s\n", name);
+    if (!isNullTerminator) {
+        name[length - 1] = '\0';
+    }
     return name;
 }
 
@@ -41,6 +50,7 @@ int main()
 {
     char name[5] = "Miles";
     reverseString(name, sizeof(name));
+    printf("RESULT\n");
     for (int i = 0; i < sizeof(name); i++) {
         printf("%c\n", name[i]);
     }
